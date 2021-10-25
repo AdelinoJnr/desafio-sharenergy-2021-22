@@ -20,6 +20,12 @@ const getById = async (id) => {
   return user;
 };
 
+const findByEmail = async (email) => {
+  const db = await connection();
+  const user = await db.collection('users').findOne({ email });
+  return user;
+};
+
 const update = async (id, data) => {
   if (!ObjectId.isValid(id)) return null;
   const db = await connection();
@@ -39,4 +45,5 @@ module.exports = {
   getById,
   update,
   remove,
+  findByEmail,
 };
