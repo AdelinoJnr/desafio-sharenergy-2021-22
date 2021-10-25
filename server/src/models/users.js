@@ -3,8 +3,8 @@ const { ObjectId } = require('mongodb');
 
 const create = async (data) => {
   const db = await connection();
-  const user = await db.collection('users').insertOne({ ...data });
-  return { id: user.insertedId, ...data };
+  const user = await db.collection('users').insertOne({ ...data, usinas: [] });
+  return { id: user.insertedId, ...data, usinas: [] };
 };
 
 const getAll = async () => {

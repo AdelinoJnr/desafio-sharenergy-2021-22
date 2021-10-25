@@ -9,7 +9,9 @@ const create = async (data) => {
   if (findUser) return { status: 400, message: 'User already exist!' };
 
   const user = await User.create(data);
-  return { status: 201, data: user };
+  const { password: _, ...newUser } = user;
+
+  return { status: 201, data: newUser };
 };
 
 const getAll = async () => {
