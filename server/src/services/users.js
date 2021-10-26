@@ -8,10 +8,9 @@ const create = async (data) => {
   const findUser = await User.findByEmail(data.email);
   if (findUser) return { status: 400, message: 'User already exist!' };
 
-  const user = await User.create(data);
-  const { password: _, ...newUser } = user;
+  await User.create(data);
 
-  return { status: 201, data: newUser };
+  return { status: 201, data: 'Created Sucess!' };
 };
 
 const getAll = async () => {
@@ -22,6 +21,13 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const user = await User.getById(id);
+  if (!user) return { status: 404, message: 'User not found!' };
+
+  return { status: 200, data: user };
+};
+
+const getByEmail = async (email) => {
+  const user = await User.findByEmail(email);
   if (!user) return { status: 404, message: 'User not found!' };
 
   return { status: 200, data: user };
@@ -52,4 +58,5 @@ module.exports = {
   getById,
   remove,
   update,
+  getByEmail,
 };

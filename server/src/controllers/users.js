@@ -4,7 +4,7 @@ const create = async (req, res) => {
   const { status, data, message } = await User.create(req.body);
   if (message) return res.status(status).json({ message });
 
-  res.status(status).json(data);
+  res.status(status).json({ message: data });
 };
 
 const getAll = async (_req, res) => {
@@ -16,6 +16,14 @@ const getAll = async (_req, res) => {
 const getById = async (req, res) => {
   const { id } = req.params;
   const { status, data, message } = await User.getById(id);
+  if (message) return res.status(status).json({ message });
+
+  res.status(status).json(data);
+};
+
+const getByEmail = async (req, res) => {
+  const { q } = req.query;
+  const { status, data, message } = await User.getByEmail(q);
   if (message) return res.status(status).json({ message });
 
   res.status(status).json(data);
@@ -43,4 +51,5 @@ module.exports = {
   getById,
   remove,
   update,
+  getByEmail,
 };
