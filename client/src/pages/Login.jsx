@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
-import Loading from '../components/Loading';
+import { Redirect } from 'react-router';
 
 import { getUserByEmail } from '../services/api';
 
 function Login() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
   const [email, setEMail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState();
   const [user, setUser] = useState();
+  const token = user ? user.token : false;
 
-  const handleClick = async () => {
-    setIsLoading(true);
-    await getUserByEmail(email, setUser);
-    if (!user) {
-      setError('User nao encontrado!');
-    }
-    setIsLoading(false);
+  const handleClick = async (ev) => {
+    ev.preventDefault();
+    const payload = { email, password };
+    await getUserByEmail(payload, setUser, setError);
   };
 
-  if (isLoading) {
-    return <Loading />;
+  if (token) {
+    return <Redirect to="/home" />;
   }
+
+  console.log(user);
 
   return (
     <>
@@ -39,8 +38,7 @@ function Login() {
           type="password"
           placeholder="Senha"
         />
-        <button onClick={handleClick} type="button">Entrar</button>
-        {user}
+        <button onClick={handleClick} type="submit">Entrar</button>
         { error && <p>{error}</p> }
       </form>
     </>

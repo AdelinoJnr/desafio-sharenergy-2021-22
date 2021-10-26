@@ -12,7 +12,7 @@ const login = async (data) => {
   const user = await User.findByEmail(email);
   if (!user) return { status: 404, message: 'User not found!' };
 
-  if (!user.password === password) return { status: 400, message: 'Email or password invalid!' };
+  if (user.password !== password) return { status: 400, message: 'Email or password invalid!' };
   const { password: _, ...newUser } = user;
 
   const token = jwt.sign({ data: newUser }, JWT_SECRET, JWT_CONFIG);
