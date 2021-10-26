@@ -1,9 +1,8 @@
 import React from 'react';
-import { arrayOf } from 'prop-types';
+import { shape, arrayOf } from 'prop-types';
 import CardFactory from './CardFactory';
 
 function Factories({ factories }) {
-  console.log(factories);
   return (
     <section>
       {factories.map((factory) => <CardFactory key={factory._id} factory={factory} />)}
@@ -12,7 +11,7 @@ function Factories({ factories }) {
 }
 
 Factories.propTypes = {
-  factories: arrayOf().isRequired,
+  factories: arrayOf(shape()).isRequired,
 };
 
 export default Factories;
