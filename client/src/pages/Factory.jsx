@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { shape } from 'prop-types';
 
 import { getFactoryById } from '../services/api';
+import Grafic from '../components/Grafic';
 
 function Factory({ match }) {
   const [factory, setFactory] = useState();
@@ -15,7 +16,7 @@ function Factory({ match }) {
 
   return (
     <div>
-      Usina
+      { factory && <Grafic factory={factory} /> }
     </div>
   );
 }
