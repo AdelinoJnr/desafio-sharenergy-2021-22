@@ -12,20 +12,21 @@ function Home() {
     getAllFactorys(setFactories, Number(skip));
   }, [skip]);
 
-  const handleClickNext = () => {
-    setSkip(skip + 10);
-  };
-
-  const handleClickPrevious = () => {
-    setSkip(skip - 10);
-  };
-
   return (
     <>
       <Header />
       { factories && <Factories factories={factories} /> }
-      <button disabled={skip === 0} onClick={handleClickPrevious}>Anterior</button>
-      <button onClick={handleClickNext}>Proximo</button>
+      <button
+        disabled={skip === 0}
+        onClick={() => setSkip(skip - 10)}
+      >
+        Anterior
+      </button>
+      <button
+        onClick={() => setSkip(skip + 10)}
+      >
+        Proximo
+      </button>
     </>
   );
 }

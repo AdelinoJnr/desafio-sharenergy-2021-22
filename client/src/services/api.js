@@ -33,4 +33,14 @@ export const getAllFactorys = async (setFactories, num) => {
   }
 };
 
+export const getFactoryById = async (id, setFactory) => {
+  try {
+    const factory = await api.get(`api/factories/${id}`);
+    setFactory(factory.data);
+    console.log(factory.data);
+  } catch (_e) {
+    console.log('Deu Ruim!');
+  }
+};
+
 export default api;
