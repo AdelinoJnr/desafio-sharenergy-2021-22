@@ -1,4 +1,4 @@
-const Factory = require('../services/factorys');
+const Factory = require('../services/factories');
 
 const getAll = async (_req, res) => {
   const { status, data } = await Factory.getAll();

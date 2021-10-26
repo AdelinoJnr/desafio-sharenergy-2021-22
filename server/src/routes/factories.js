@@ -1,4 +1,4 @@
-const Factory = require('../controllers/factorys');
+const Factory = require('../controllers/factories');
 const router = require('express').Router();
 
 router.get('/', Factory.getAll);

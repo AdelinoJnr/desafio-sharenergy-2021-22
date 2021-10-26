@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const usersRoute = require('../routes/users');
-const factorysRouter = require('../routes/factorys');
+const factoriesRouter = require('../routes/factories');
 
 const app = express();
 app.use(cors());
@@ -14,6 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/users', usersRoute);
 
 // Usinas
-app.use('/api/factorys', factorysRouter);
+app.use('/api/factories', factoriesRouter);
 
 module.exports = app;

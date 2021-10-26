@@ -1,9 +1,9 @@
-const Factory = require('../models/factorys');
+const Factory = require('../models/factories');
 
 const getAll = async () => {
-  const factorys = await Factory.getAll();
+  const factories = await Factory.getAll();
 
-  return { status: 200, data: factorys };
+  return { status: 200, data: factories };
 };
 
 const getById = async (id) => {

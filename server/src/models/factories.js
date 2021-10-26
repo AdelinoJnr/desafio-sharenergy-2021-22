@@ -3,8 +3,8 @@ const { ObjectId } = require('mongodb');
 
 const getAll = async () => {
   const db = await connection();
-  const factorys = await db.collection('usinas').find().toArray();
-  return factorys;
+  const factories = await db.collection('usinas').find().toArray();
+  return factories;
 };
 
 const getById = async (id) => {
