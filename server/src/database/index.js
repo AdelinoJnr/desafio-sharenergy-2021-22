@@ -26,4 +26,5 @@ module.exports = {
   MONGO_DB_URL,
   DB_NAME,
   userMock,
+  user,
 };
