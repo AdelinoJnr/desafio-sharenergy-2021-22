@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
-import { getUserByEmail } from '../services/api';
+import { userLogin } from '../services/api';
 
 function Login() {
   const [email, setEMail] = useState('');
@@ -13,7 +14,7 @@ function Login() {
   const handleClick = async (ev) => {
     ev.preventDefault();
     const payload = { email, password };
-    await getUserByEmail(payload, setUser, setError);
+    await userLogin(payload, setUser, setError);
   };
 
   if (token) {
@@ -31,15 +32,18 @@ function Login() {
           value={email}
           type="text"
           placeholder="E-mail"
+          required
         />
         <input
           onChange={(ev) => setPassword(ev.target.value)}
           value={password}
           type="password"
           placeholder="Senha"
+          required
         />
         <button onClick={handleClick} type="submit">Entrar</button>
         { error && <p>{error}</p> }
+        <Link to="/register">Cadastrar</Link>
       </form>
     </>
   );
