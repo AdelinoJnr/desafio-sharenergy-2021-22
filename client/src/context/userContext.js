@@ -16,7 +16,7 @@ export function UserProvider({ children }) {
   }, [token]);
   
   return (
-    <UserContext.Provider value={ {name: 'Adelino', token, setToken: setToken, user} }>
+    <UserContext.Provider value={ { token, setToken: setToken, user} }>
       {children}
     </UserContext.Provider>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { shape } from 'prop-types';
+import Header from '../components/Header';
 
 import { getFactoryById } from '../services/api';
 import Grafic from '../components/Grafic';
@@ -15,9 +16,10 @@ function Factory({ match }) {
   console.log(factory);
 
   return (
-    <div>
+    <>
+      <Header />
       { factory && <Grafic factory={factory} /> }
-    </div>
+    </>
   );
 }
 

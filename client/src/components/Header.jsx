@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/userContext';
 
 import Nav from './Nav';
 
 function Header() {
+  const { user: { name } } = useContext(UserContext);
+
   return (
     <header>
       <Nav />
-      <p>Nome do usuario</p>
+      <p>{name}</p>
     </header>
   );
 }

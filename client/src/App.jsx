@@ -9,6 +9,8 @@ import Participation from './pages/Participation';
 
 import { UserProvider } from './context/userContext';
 
+import './styles/global.css';
+
 function App() {
   return (
     <>
