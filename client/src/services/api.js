@@ -24,4 +24,14 @@ export const createUser = async (payload, setError) => {
   }
 };
 
+export const getAllFactorys = async (setFactories) => {
+  try {
+    const payload = { num: 10 };
+    const factories = await api.get('api/factories', payload);
+    setFactories(factories.data);
+  } catch (_e) {
+    console.log('Deu Ruim!');
+  }
+};
+
 export default api;

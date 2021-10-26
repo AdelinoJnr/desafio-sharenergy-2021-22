@@ -14,7 +14,22 @@ const getById = async (req, res) => {
   res.status(status).json(data);
 };
 
+const createMany = async (req, res) => {
+  const { status, data } = await Factory.createMany(req.body);
+
+  res.status(status).json(data);
+};
+
+const getLimit = async (req, res) => {
+  const { num } = req.body;
+  const { status, data } = await Factory.getLimit(num);
+
+  res.status(status).json(data);
+};
+
 module.exports = {
   getAll,
   getById,
+  createMany,
+  getLimit,
 };
