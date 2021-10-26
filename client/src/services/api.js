@@ -24,10 +24,9 @@ export const createUser = async (payload, setError) => {
   }
 };
 
-export const getAllFactorys = async (setFactories) => {
+export const getAllFactorys = async (setFactories, num) => {
   try {
-    const payload = { num: 10 };
-    const factories = await api.get('api/factories', payload);
+    const factories = await api.post('api/factories/limit', { num });
     setFactories(factories.data);
   } catch (_e) {
     console.log('Deu Ruim!');
