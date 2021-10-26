@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
+
+import { UserContext } from '../context/userContext';
 
 import { userLogin } from '../services/api';
 
 function Login() {
+  const { setToken, token } = useContext(UserContext);
+
   const [email, setEMail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState();
-  const [user, setUser] = useState();
-  const token = user ? user.token : false;
+  const checked = token ? true : false;
+
 
   const handleClick = async (ev) => {
     ev.preventDefault();
     const payload = { email, password };
-    await userLogin(payload, setUser, setError);
+    await userLogin(payload, setError, setToken);
   };
 
-  if (token) {
+  if (checked) {
     return <Redirect to="/home" />;
   }
-
-  console.log(user);
 
   return (
     <>

@@ -21,6 +21,10 @@ const getById = async (req, res) => {
   res.status(status).json(data);
 };
 
+const getUserToken = (req, res) => {
+  res.status(200).json(req.user);
+};
+
 const getByEmail = async (req, res) => {
   const { q } = req.query;
   const { status, data, message } = await User.getByEmail(q);
@@ -52,4 +56,5 @@ module.exports = {
   remove,
   update,
   getByEmail,
+  getUserToken,
 };
