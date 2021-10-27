@@ -64,4 +64,14 @@ export const getFactoriesByUser = async (factories, setFactories) => {
   }
 };
 
+export const updateFactoriesUser = async (id, payload, token) => {
+  try {
+    const header = { headers: { Authorization: token } };
+    const user = await api.put(`api/users/factories/${id}`, payload, header);
+    console.log(user);
+  } catch (_e) {
+    console.log('Deu Ruim!');
+  }
+};
+
 export default api;
