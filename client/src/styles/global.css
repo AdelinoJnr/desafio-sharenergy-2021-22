@@ -49,3 +49,20 @@ a {
   text-decoration: none;
   color: var(--pink-color-600);
 }
+
+.btn {
+  border: none;
+  font-family: Poppins, sans-serif;
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: 300px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.title-pages {
+  color: var(--texts-inputs-200);
+  font-size: 3rem;
+  text-align: center;
+  padding: 20px;
+}
