@@ -1,17 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Redirect } from 'react-router';
 import CardFactory from '../components/CardFactory';
 import Header from '../components/Header';
 
 import { UserContext } from '../context/userContext';
 import { getFactoriesByUser } from '../services/api';
+import { checkedToken } from '../utils/helpers';
 
 function Participation() {
+  const { user: { usinas }, token } = useContext(UserContext);
   const [factories, setFactories] = useState();
-  const { user: { usinas } } = useContext(UserContext);
+  const [noToken, setNoToken] = useState();
 
   useEffect(() => {
     getFactoriesByUser(usinas, setFactories);
   }, [usinas]);
+
+  useEffect(() => {
+    checkedToken(token, setNoToken);
+  }, []);
+
+  if (noToken) {
+    return (
+      <Redirect to="/login" />
+    );
+  }
 
   const renderTitle = () => {
     if (usinas.length === 0) {

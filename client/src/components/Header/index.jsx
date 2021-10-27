@@ -25,7 +25,7 @@ function Header() {
       <Nav />
       <div className="content-user-logged">
         <p>{`Bem vindo(a) ${user.name}`}</p>
-        <Link to="/login">
+        <Link className="link-disconnect" to="/login">
           <button onClick={handleClick}>Sair</button>
         </Link>
       </div>

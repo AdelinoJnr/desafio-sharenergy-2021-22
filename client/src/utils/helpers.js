@@ -10,3 +10,9 @@ export const updateLocalStorage = (key, data) => {
 export const deleteLocalStorage = (key) => {
   localStorage.removeItem(key);
 };
+
+export const checkedToken = (token, setNoToken) => {
+  if(!token || token === '') {
+    setNoToken(true);
+  }
+};

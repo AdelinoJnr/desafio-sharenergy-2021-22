@@ -36,7 +36,7 @@ function Grafic({ factory, className, width, height }) {
 
 Grafic.propTypes = {
   factory: shape().isRequired,
-  className: string.isRequired,
+  className: string,
   width: number,
   height: number,
 };
