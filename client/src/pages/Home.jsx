@@ -14,19 +14,26 @@ function Home() {
 
   return (
     <>
-      <Header />
-      { factories && <Factories factories={factories} /> }
-      <button
-        disabled={skip === 0}
-        onClick={() => setSkip(skip - 10)}
-      >
-        Anterior
-      </button>
-      <button
-        onClick={() => setSkip(skip + 10)}
-      >
-        Proximo
-      </button>
+      <main className="main-home">
+        <Header />
+        <h2 className="title-pages" >Usinas Fotovoltaicas</h2>
+        { factories && <Factories factories={factories} /> }
+        <div>
+          <button
+            className="btn-arrow"
+            disabled={skip === 0}
+            onClick={() => setSkip(skip - 10)}
+          >
+            Anterior
+          </button>
+          <button
+            className="btn-arrow"
+            onClick={() => setSkip(skip + 10)}
+          >
+            Proximo
+          </button>
+        </div>
+      </main>
     </>
   );
 }

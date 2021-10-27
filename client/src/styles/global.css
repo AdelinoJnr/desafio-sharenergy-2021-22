@@ -25,6 +25,16 @@
   --texts-inputs-400: rgb(227, 227, 227);
 
   --texts-inputs-200: rgb(243, 243, 243);
+
+  --grafic-temperatura-600: rgb(212, 8, 8);
+
+  --grafic-potencia-600: rgb(66, 46, 246);
+
+  --grafic-tempo-600: rgb(39, 143, 36);
+
+  --grafic-tensao-600: rgb(255, 157, 0);
+
+  --grafic-corrente-600: rgb(209, 13, 199);
 }
 
 html {

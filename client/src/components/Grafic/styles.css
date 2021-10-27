@@ -1,0 +1,20 @@
+/* Grafic */
+.content-grafic {
+  background-color: var(--texts-inputs-400);
+  border-radius: 20px;
+  padding: 50px 50px 0 0;
+}
+
+.name-grafic {
+  color: var(--pink-color-400);
+  font-size: 0.2rem;
+}
+
+.bar-grafic {
+  background-color: red;
+}
+
+.legend-grafic {
+  color: blue;
+  background-color: red;
+}
