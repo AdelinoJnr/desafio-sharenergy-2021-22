@@ -11,7 +11,7 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    updateLocalStorage('token', { token });
+    updateLocalStorage('token', token);
     userByToken(token, setUser);
   }, [token]);
   

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shape, arrayOf } from 'prop-types';
-import CardFactory from './CardFactory';
+import CardFactory from '../CardFactory';
 
 function Factories({ factories }) {
   return (

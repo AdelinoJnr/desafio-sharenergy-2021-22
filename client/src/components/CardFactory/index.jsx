@@ -2,7 +2,7 @@ import React from 'react';
 import { shape } from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Grafic from './Grafic';
+import Grafic from '../Grafic';
 
 function CardFactory({ factory }) {
   const { _id } = factory;
