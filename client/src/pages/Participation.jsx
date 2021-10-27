@@ -13,13 +13,28 @@ function Participation() {
     getFactoriesByUser(usinas, setFactories);
   }, [usinas]);
 
+  const renderTitle = () => {
+    if (usinas.length === 0) {
+      return (
+        <p>Sem percentual em Usinas</p>
+      );
+    }
+    return (
+      <h1 className="title-pages">Suas Participações em Usinas</h1> 
+    );
+  };
+
   return (
     <>
-      <Header />
-      { usinas.length === 0 ? <p>Sem percentual em Usinas</p> : <h1 className="title-pages">Usinas</h1> }
-      { factories && factories
-        .map((factory, index) => <CardFactory key={index} factory={factory} />) }
-      
+      <main className="main-participation">
+        <Header />
+        { renderTitle() }
+        { factories && (
+          <section className="content-factories">
+            {factories.map((factory, index) => <CardFactory key={index} factory={factory} />)}
+          </section>
+        )}
+      </main>
     </>
   );
 }

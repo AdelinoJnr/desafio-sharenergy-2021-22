@@ -98,3 +98,12 @@
   background-color: var(--blue-color-600);
   margin-bottom: 50px;
 }
+
+/* Participation */
+.main-participation > h1 {
+  margin: 50px 0;
+}
+
+.main-participation:last-child {
+  margin-bottom: 50px;
+}
