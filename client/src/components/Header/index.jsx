@@ -4,6 +4,8 @@ import { UserContext } from '../../context/userContext';
 import Nav from '../Nav';
 import Loading from '../Loading';
 
+import './styles.css';
+
 function Header() {
   const { user } = useContext(UserContext);
 
@@ -12,9 +14,12 @@ function Header() {
   }
 
   return (
-    <header>
+    <header className="content-header">
       <Nav />
-      <p>{user.name}</p>
+      <div className="content-user-logged">
+        <p>{`Bem vindo(a) ${user.name}`}</p>
+        <button>Sair</button>
+      </div>
     </header>
   );
 }

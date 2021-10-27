@@ -1,0 +1,34 @@
+/* Header */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.content-user-logged {
+  width: 35%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--texts-inputs-200);
+  font-size: 1.1rem;
+}
+
+.content-user-logged > p {
+  color: var(--purple-color-600);
+}
+
+.content-user-logged > button {
+  width: 70px;
+  padding: 5px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: var(--pink-color-600);
+  color: var(--texts-inputs-200);
+  transition: 0.4s;
+}
+
+.content-user-logged > button:hover {
+  transform: scale(1.1);
+}
