@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 
 import Grafic from '../Grafic';
 
+import './styles.css';
+
 function CardFactory({ factory }) {
   const { _id } = factory;
 
   return (
-    <div>
+    <div className="content-factory">
       <Grafic factory={factory} />
-      <Link to={`/factory/${_id}`}>Ver detalhes</Link>
+      <Link className="link-details-factory" to={`/factory/${_id}`}>Ver detalhes ...</Link>
     </div>
   );
 }

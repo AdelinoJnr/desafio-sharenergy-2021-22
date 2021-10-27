@@ -1,10 +1,10 @@
 import React from 'react';
 import { BarChart, CartesianGrid, Tooltip, Legend, Bar, XAxis, YAxis } from 'recharts';
-import { shape } from 'prop-types';
+import { number, shape, string } from 'prop-types';
 
 import './styles.css';
 
-function Grafic({ factory }) {
+function Grafic({ factory, className, width, height }) {
   const { corrente_A, potencia_kW, temperatura_C, tempo_h, tensao_V } = factory;
 
   const data = [
@@ -19,9 +19,9 @@ function Grafic({ factory }) {
   ];
 
   return (
-    <BarChart className="content-grafic" width={400} height={300} data={data}>
+    <BarChart className={className} width={width || 400} height={height || 300} data={data}>
       <CartesianGrid strokeDasharray="1 1" />
-      <XAxis className="name-grafic" dataKey="name" />
+      <XAxis dataKey="name" />
       <YAxis />
       <Tooltip />
       <Legend className="legend-grafic" />
@@ -36,6 +36,9 @@ function Grafic({ factory }) {
 
 Grafic.propTypes = {
   factory: shape().isRequired,
+  className: string.isRequired,
+  width: number,
+  height: number,
 };
 
 export default Grafic;

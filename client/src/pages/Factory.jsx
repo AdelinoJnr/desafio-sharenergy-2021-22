@@ -26,23 +26,35 @@ function Factory({ match }) {
     getFactoryById(id, setFactory);
   }, []);
 
+  const renderForm = () => {
+    return (
+      <form className="form-percentual">
+        <h2 className="title-pages">Preenche os dados</h2>
+        <input
+          type="number"
+          placeholder="percentual"
+          value={percentual}
+          onChange={(ev) => setPercentual(ev.target.value)}
+        />
+        <button className="btn btn-percentual-submit" onClick={handleClick} >Participar</button>
+      </form>
+    );
+  };
+
   return (
     <>
-      <Header />
-      { factory && <Grafic factory={factory} /> }
-      <button onClick={() => setParticipation(true)}>Desejo participar</button>
-      { participation && (
-        <form>
-          <h1>Preenche os dados</h1>
-          <input
-            type="number"
-            placeholder="percentual"
-            value={percentual}
-            onChange={(ev) => setPercentual(ev.target.value)}
-          />
-          <button onClick={handleClick} >Participar</button>
-        </form>
-      ) }
+      <main className="main-factory">
+        <Header />
+        <h2 className="title-pages">Usina Fotovoltaica</h2>
+        { factory && <Grafic className="content-grafic" height={600} width={900} factory={factory} /> }
+        <button
+          className="btn"
+          onClick={() => setParticipation(true)}
+        >
+          Desejo participar
+        </button>
+        { participation && renderForm() }
+      </main>
     </>
   );
 }
