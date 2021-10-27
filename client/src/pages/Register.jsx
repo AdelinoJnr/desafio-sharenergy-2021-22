@@ -1,49 +1,38 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import FormRegister from '../components/FormRegister';
 
 import { createUser } from '../services/api';
 
+import './styles.css';
+
 function Register() {
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
   const [error, setError] = useState();
 
-  const handleClick = async (ev) => {
+  const handleClick = async (ev, name, email, password) => {
     ev.preventDefault();
     const payload = { name, email, password, role: 'user' };
     await createUser(payload, setError);
   };
 
+  const renderError = () => {
+    return (
+      <div className="content-error">
+        <p>{error}</p>
+      </div>
+    );
+  };
+
 	return (
 		<>
-			<form>
-        <h2>Cadastre-se</h2>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(ev) => setName(ev.target.value)}
-          placeholder="Digite seu nome"
-        />
-        <input
-          type="text"
-          id="email"
-          value={email}
-          onChange={(ev) => setEmail(ev.target.value)}
-          placeholder="Digite seu email"
-        />
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(ev) => setPassword(ev.target.value)}
-          placeholder="Digite sua senha"
-        />
-        <button onClick={handleClick} type="submit">Cadastrar</button>
-        { error && <p>{error}</p> }
-        <Link to="/login">Login</Link>
-      </form>
+      <main className="main-register">
+        <h2 className="title-pages">Cadastre-se</h2>
+        <FormRegister handleClick={handleClick} />
+        { error && renderError() }
+        <div className="content-link-login">
+          <span>Ja possui cadastro? <Link to="/login">Login</Link> </span>
+        </div>
+      </main>
 		</>
 	);
 }
