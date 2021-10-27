@@ -2,14 +2,19 @@ import React, { useContext } from 'react';
 import { UserContext } from '../context/userContext';
 
 import Nav from './Nav';
+import Loading from './Loading';
 
 function Header() {
-  const { user: { name } } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+
+  if (!user) {
+    return <Loading />;
+  }
 
   return (
     <header>
       <Nav />
-      <p>{name}</p>
+      <p>{user.name}</p>
     </header>
   );
 }

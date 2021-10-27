@@ -41,6 +41,14 @@ const update = async (req, res) => {
   res.status(status).json(data);
 };
 
+const updateFactories = async (req, res) => {
+  const { id } = req.params;
+  const { status, data, message } = await User.updateFactories(id, req.body);
+  if (message) return res.status(status).json({ message });
+
+  res.status(status).json(data);
+};
+
 const remove = async (req, res) => {
   const { id } = req.params;
   const { status, message } = await User.remove(id);
@@ -57,4 +65,5 @@ module.exports = {
   update,
   getByEmail,
   getUserToken,
+  updateFactories,
 };

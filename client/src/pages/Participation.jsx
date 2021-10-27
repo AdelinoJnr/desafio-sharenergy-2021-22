@@ -16,7 +16,7 @@ function Participation() {
   return (
     <>
       <Header />
-      <h1>Usinas</h1>
+      { usinas.length === 0 ? <p>Sem percentual em Usinas</p> : <h1>Usinas</h1> }
       { factories && factories
         .map((factory, index) => <CardFactory key={index} factory={factory} />) }
       

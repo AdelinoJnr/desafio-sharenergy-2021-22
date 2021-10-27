@@ -9,6 +9,7 @@ router.get('/search', User.getByEmail);
 router.get('/', User.getAll);
 router.get('/:id', User.getById);
 router.put('/:id', User.update);
+router.put('/factories/:id', User.updateFactories);
 router.delete('/:id', User.remove);
 
 module.exports = router;

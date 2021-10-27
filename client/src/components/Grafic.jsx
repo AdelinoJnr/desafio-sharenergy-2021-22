@@ -1,25 +1,27 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { BarChart, CartesianGrid, Tooltip, Legend, Bar, XAxis, YAxis } from 'recharts';
 import { shape } from 'prop-types';
 
 function Grafic({ factory }) {
-  const { corrente_A, potencia_kW, temperatura_C, tempo_h, tensao_V } = factory;
+  const { corrente_A, potencia_kW, temperatura_C, tempo_h } = factory;
 
   const data = [
-    { name: 'Corrente', uv: corrente_A },
-    { name: 'Potencia', uv: potencia_kW },
-    { name: 'Temperatura', uv: temperatura_C },
-    { name: 'Tempo', uv: tempo_h },
-    { name: 'Tensão', uv: tensao_V },
+    { name: 'Corrente', D: corrente_A },
+    { name: 'Potencia', D: potencia_kW },
+    { name: 'Temperatura', D: temperatura_C },
+    { name: 'Tempo', D: tempo_h },
+    // { name: 'Tensão', V: tensao_V },
   ];
 
   return (
-    <LineChart width={600} height={300} data={data}>
-      <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" />
+    <BarChart width={600} height={300} data={data}>
+      <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
-    </LineChart>
+      <Tooltip />
+      <Legend />
+        <Bar dataKey="D" fill="#82ca9d" />
+    </BarChart>
   );
 }
 
