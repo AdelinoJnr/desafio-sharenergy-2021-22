@@ -12,7 +12,13 @@ const login = Joi.object({
   password: Joi.string().required(),
 });
 
+const updateFactories = Joi.object({
+  usinaId: Joi.string().required(),
+  percentual: Joi.number().required(),
+});
+
 module.exports = {
   createUser,
   login,
+  updateFactories,
 };

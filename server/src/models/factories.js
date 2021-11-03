@@ -3,7 +3,7 @@ const { ObjectId } = require('mongodb');
 
 const getAll = async () => {
   const db = await connection();
-  const factories = await db.collection('usinas').find().toArray();
+  const factories = await db.collection('usinas').find().limit(10).toArray();
   return factories;
 };
 
@@ -14,7 +14,21 @@ const getById = async (id) => {
   return factory;
 };
 
+const createMany = async (data) => {
+  const db = await connection();
+  const factories = await db.collection('usinas').insertMany(data);
+  return factories;
+};
+
+const getLimit = async (num) => {
+  const db = await connection();
+  const factories = await db.collection('usinas').find().skip(num).limit(10).toArray();
+  return factories;
+};
+
 module.exports = {
   getAll,
   getById,
+  createMany,
+  getLimit,
 };

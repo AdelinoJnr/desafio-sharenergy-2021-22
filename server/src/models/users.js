@@ -34,6 +34,14 @@ const update = async (id, data) => {
   return { ...user.value, ...data };
 };
 
+const updateFactories = async (id, usinas) => {
+  if (!ObjectId.isValid(id)) return null;
+  const db = await connection();
+  const user = await db.collection('users')
+    .findOneAndUpdate({ _id: ObjectId(id) }, { $set: { usinas } });
+  return { ...user.value, usinas };
+};
+
 const remove = async (id) => {
   const db = await connection();
   await db.collection('users').deleteOne({ _id: ObjectId(id) });
@@ -46,4 +54,5 @@ module.exports = {
   update,
   remove,
   findByEmail,
+  updateFactories,
 };

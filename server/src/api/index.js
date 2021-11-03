@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const usersRoute = require('../routes/users');
 const factoriesRouter = require('../routes/factories');
+const loginRouter = require('../routes/login');
 
 const app = express();
 app.use(cors());
@@ -15,5 +16,8 @@ app.use('/api/users', usersRoute);
 
 // Usinas
 app.use('/api/factories', factoriesRouter);
+
+// Login
+app.use('/api/login', loginRouter);
 
 module.exports = app;

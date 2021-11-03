@@ -1,48 +1,49 @@
-import React, { useState } from 'react';
-import Loading from '../components/Loading';
+import React, { useState, useContext } from 'react';
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
-import { getUserByEmail } from '../services/api';
+import FormLogin from '../components/FormLogin';
+import { UserContext } from '../context/userContext';
+
+import { userLogin } from '../services/api';
+
+import './styles.css';
 
 function Login() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [email, setEMail] = useState('');
-  const [password, setPassword] = useState('');
-  const [user, setUser] = useState();
+  const { setToken, token } = useContext(UserContext);
 
-  const handleClick = async () => {
-    setIsLoading(true);
-    await getUserByEmail(email, setUser);
-    if (!user) {
-      setError('User nao encontrado!');
-    }
-    setIsLoading(false);
+  const [error, setError] = useState();
+  const checked = token ? true : false;
+
+
+  const handleClick = async (ev, email, password) => {
+    ev.preventDefault();
+    const payload = { email, password };
+    await userLogin(payload, setError, setToken);
   };
 
-  if (isLoading) {
-    return <Loading />;
+  const renderError = () => {
+    return (
+      <div className="content-error">
+        <p>{error}</p>
+      </div>
+    );
+  };
+
+  if (checked) {
+    return <Redirect to="/home" />;
   }
 
   return (
     <>
-      <form>
-        <h2>Login</h2>
-        <input
-          onChange={(ev) => setEMail(ev.target.value)}
-          value={email}
-          type="text"
-          placeholder="E-mail"
-        />
-        <input
-          onChange={(ev) => setPassword(ev.target.value)}
-          value={password}
-          type="password"
-          placeholder="Senha"
-        />
-        <button onClick={handleClick} type="button">Entrar</button>
-        {user}
-        { error && <p>{error}</p> }
-      </form>
+      <main className="main-login">
+        <h2 className="title-pages">Login</h2>
+        <FormLogin handleClick={handleClick} />
+        { error && renderError() }
+        <div className="content-link-register">
+          <span>Ainda nao possui cadastro? <Link to="/register">Cadastre-se</Link> </span>
+        </div>
+      </main>
     </>
   );
 }

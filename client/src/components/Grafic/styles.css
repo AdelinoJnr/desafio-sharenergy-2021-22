@@ -1,0 +1,7 @@
+/* Grafic */
+.content-grafic {
+  background-color: var(--texts-inputs-400);
+  border-radius: 20px;
+  padding: 60px 60px 20px 20px;
+  margin: 0px auto;
+}

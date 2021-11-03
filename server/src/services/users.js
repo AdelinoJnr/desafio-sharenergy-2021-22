@@ -43,6 +43,19 @@ const update = async (id, data) => {
   return { status: 200, data: user };
 };
 
+const updateFactories = async (id, data) => {
+  const { error } = Schema.updateFactories.validate(data);
+  if (error) return { status: 400, message: 'Invalid Entries!' };
+
+  const user = await User.getById(id);
+  if (!user) return { status: 404, message: 'User not found!' };
+
+  const newFactories = [...user.usinas, data];
+  await User.updateFactories(id, newFactories);
+  
+  return { status: 200, data: { message: 'Update sucess!' } };
+};
+
 const remove = async (id) => {
   const findUser = User.getById(id);
   if (!findUser) return { status: 404, message: 'User not found!' };
@@ -59,4 +72,5 @@ module.exports = {
   remove,
   update,
   getByEmail,
+  updateFactories,
 };
